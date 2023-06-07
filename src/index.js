@@ -62,6 +62,7 @@ function renderBreedsSelect(breeds) {
 function renderBreedsCard(breedImg, object) {
   return cardBox.innerHTML = `<img 
   src=${breedImg}
+  class="ee"
   alt="cat"
   width="300"
   /><div class="text-content">
