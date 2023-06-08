@@ -6,7 +6,7 @@ h5,
 p {
   margin: 0;
 }
-
+ 
 .unvisible {
   display: none;
 }
@@ -15,6 +15,8 @@ p {
   margin-bottom: 50px;
   width: 150px;
   height: 30px;
+  text-align: center;
+  
 }
 
 .error {
@@ -30,6 +32,7 @@ p {
 
 .cat-info {
   display: flex;
+  justify-content: center;
 }
 
 image {
@@ -54,7 +57,7 @@ image {
  .ee {
   width: 700px;
   font-size: 38px;
-  padding: 20px;
+  border-radius: 10px;
  }
 
  .bread-temperament {
