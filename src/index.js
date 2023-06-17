@@ -1,7 +1,10 @@
+import SlimSelect from 'slim-select';
+import Notiflix from 'notiflix';
 import { fetchBreeds, fetchCatByBreed } from "./js/cat-api";
 
+
 const cardBox = document.querySelector(".cat-info");
-const selectList = document.querySelector(".breed-select");
+const selectList = document.querySelector("#breed-select");
 const loader = document.querySelector(".loader");
 const errorMessege = document.querySelector(".error");
 
