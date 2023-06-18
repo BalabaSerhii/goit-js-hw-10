@@ -8,8 +8,6 @@ export function fetchBreeds() {
   }).then(response => response.json()); 
 }
 
-
-
 export function fetchCatByBreed(breedId) {
   const url = `https://api.thecatapi.com/v1/images/search?breed_ids=${breedId}&api_key=${APIKEY}`;
   return fetch(url, {
