@@ -1,5 +1,3 @@
-<<<<<<< HEAD:src/js/index.js
-=======
 import SlimSelect from 'slim-select';
 import Notiflix from 'notiflix';
 import { fetchBreeds, fetchCatByBreed } from "./js/cat-api";
@@ -107,6 +105,3 @@ fetchBreeds()
     hideLoad();
     seeError();
   });
-
-
->>>>>>> parent of 1b2d3ef (utyuyfkfyuufy):src/index.js
