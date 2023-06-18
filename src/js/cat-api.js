@@ -22,3 +22,4 @@ function fetchCatByBreed(breedId) {
 }
 
 export { fetchBreeds, fetchCatByBreed }
+
