@@ -5,10 +5,9 @@ body {
 }
 
 .breed-select {
-    width: 300px;
-    border: 1px solid hsl(0, 0%, 100%);
-    border-radius: 5px;
-    margin-bottom: 20px;
+    width: 600px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .loader {
@@ -57,14 +56,18 @@ body {
 
 .cat-container {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     margin-top: 20px;
+    justify-content: center;
+    padding-top: 50px;
+    
 }
 
 .cat-image {
-    max-width: 600px;
-    height: auto;
+    max-width: 700px;
+    height: 400px;
     margin-right: 20px;
+    border-radius: 20px;
 }
 
 .cat-details {
@@ -72,12 +75,18 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    border-radius: 15px;
+    background-color: rgb(241, 239, 239);
+    max-width: 600px;
+    height: 360px;
+   padding: 20px;
 }
 
 .cat-title {
     margin: 0;
     font-size: 20px;
     margin-bottom: 5px;
+    margin: 20px;
 }
 
 .cat-temperament {
@@ -87,8 +96,9 @@ body {
 
 .cat-description,
 .cat-temperament {
-    max-width: 600px;
+    max-width: 700px;
     margin: 0;
     font-size: 16px;
     line-height: 1.5;
 }
+

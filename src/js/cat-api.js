@@ -1,5 +1,5 @@
 const apiKey =
-  'live_BQwPfgrfwRYAEuv2Wi1qghzDEH7q4b0iBmL3DqxhefV6pUHpL5LjhGoIwJYjWGyr';
+  'live_A0BddCBCvw3bx0QQ33fvXeI93mVx6l59VBUsyj7uHjfZvkQnUvjiGTaolms8FVAg';
 
 export function fetchBreeds() {
   return fetch('https://api.thecatapi.com/v1/breeds', {
