@@ -1,6 +1,6 @@
 import SlimSelect from 'slim-select';
 import Notiflix from 'notiflix';
-import { fetchBreeds, fetchCatByBreed } from "./js/cat-api";
+import { fetchBreeds, fetchCatByBreed } from "./cat-api";
 
 const catInfo = document.querySelector(".cat-info");
 const breedSelect = document.querySelector("#placeholderSingle");
@@ -37,7 +37,7 @@ function populateBreedSelect(breeds) {
 
   new SlimSelect({
     select: '#placeholderSingle',
-    placeholder: ' Choos a breed',
+    placeholder: 'Choos a breed',
     data: options,
   });
 
@@ -54,29 +54,28 @@ function updateCI(cat) {
   image.classList.add('cat-image');
   catEl.appendChild(image);
 
-  const catDetails = document.createElement('div');
+  const catDetail = document.createElement('div');
   catDetail.classList.add('cat-detail');
 
   const breedName = document.createElement('h2');
   breedName.textContent = cat.breed[0].name;
   breedName.classList.add('cat-title');
-  catDetails.appendChild(breedName);
+  catDetail.appendChild(breedName);
 
   const description = document.createElement('p');
   description.textContent = cat.breeds[0].description;
   description.classList.add('cat-description');
-  catDetails.appendChild(description);
+  catDetail.appendChild(description);
 
   const temperament = document.createElement('p');
   temperament.textContent = `Temperament: ${cat.breeds[0].temperament}`;
   temperament.classList.add('cat-temperament');
-  catDetails.appendChild(temperament);
+  catDetail.appendChild(temperament);
 
-  catElement.appendChild(catDetails);
+  catElement.appendChild(catDetail);
 
   catInfo.innerHTML = '';
   catInfo.appendChild(catElement);
-
 }
 
 function handleBreedSelectChange() {

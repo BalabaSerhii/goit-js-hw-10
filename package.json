@@ -20,6 +20,7 @@
   "dependencies": {
     "modern-normalize": "^1.1.0",
     "notiflix": "^3.2.6",
+    "pixabay": "^0.0.1",
     "slim-select": "^2.5.0"
   },
   "devDependencies": {
