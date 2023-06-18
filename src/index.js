@@ -2,76 +2,109 @@ import SlimSelect from 'slim-select';
 import Notiflix from 'notiflix';
 import { fetchBreeds, fetchCatByBreed } from "./js/cat-api";
 
-
-const cardBox = document.querySelector(".cat-info");
-const selectList = document.querySelector("#breed-select");
+const catInfo = document.querySelector(".cat-info");
+const breedSelect = document.querySelector("#placeholderSingle");
 const loader = document.querySelector(".loader");
-const errorMessege = document.querySelector(".error");
 
-errorMessege.classList.add('unvisible')
-
-catArray()
-
-selectList.addEventListener("change", () => {
-  const catId = selectList.value;
-  console.log(catId);
-  catImg(catId);
-});
-
-function catImg(id) {
-  loader.classList.remove('unvisible'),
-    fetchCatByBreed(id)
-      .then((information) => {
-        const resultImg = information;
-        const imgObject = resultImg.breeds[0];
-        console.log(resultImg);
-        const imgSrc = resultImg.url;
-        renderBreedsCard(imgSrc, imgObject);
-      })
-      .catch((error) => {
-        console.log(error);
-        errorMessege.classList.remove('unvisible');
-        selectList.classList.add('unvisible');
-      })
-      .finally(() => loader.classList.add('unvisible'));
+function showLoad() {
+  loader.style.display = 'block';
 }
 
-function catArray() {
-  loader.classList.remove('unvisible'),
-    fetchBreeds()
-      .then((breeds) => {
-        console.log(breeds);
-        renderBreedsSelect(breeds);
-        selectList.classList.remove('unvisible');
-      })
-      .catch((error) => {
-        console.log(error);
-        errorMessege.classList.remove('unvisible');
-        selectList.classList.add('unvisible');
-      })
-      .finally(() => loader.classList.add('unvisible'));
+function hideLoad() {
+  loader.style.display = 'none';
 }
 
-function renderBreedsSelect(breeds) {
-  const markup = breeds
-  .map((breed) => {
-    return `<option value="${breed.reference_image_id}">${breed.name} </option>`;
+function seeError() {
+  Notiflix.Report.failure(
+    'Error',
+    'Oops! Something went wrong! Try reloading the page!'
+  );
+}
+
+function hideCI() {
+  catInfo.style.display = 'none';
+}
+
+function clearCI() {
+  catInfo.innerHTML = '';
+}
+
+function populateBreedSelect(breeds) {
+  const options = breeds.map(breed => ({
+    value: breed.id,
+    text: breed.name,
+  }));
+
+  new SlimSelect({
+    select: '#placeholderSingle',
+    placeholder: ' Choos a breed',
+    data: options,
+  });
+
+  breedSelect.addEventListener('change', handleBreedSelectChange);
+}
+
+function updateCI(cat) {
+  const catEl = document.createElement('div');
+  catEl.classList.add('cat-cont');
+
+  const image = document.createElement('img');
+  image.setAttribute('src', cat.url);
+  image.alt = 'Cat';
+  image.classList.add('cat-image');
+  catEl.appendChild(image);
+
+  const catDetails = document.createElement('div');
+  catDetail.classList.add('cat-detail');
+
+  const breedName = document.createElement('h2');
+  breedName.textContent = cat.breed[0].name;
+  breedName.classList.add('cat-title');
+  catDetails.appendChild(breedName);
+
+  const description = document.createElement('p');
+  description.textContent = cat.breeds[0].description;
+  description.classList.add('cat-description');
+  catDetails.appendChild(description);
+
+  const temperament = document.createElement('p');
+  temperament.textContent = `Temperament: ${cat.breeds[0].temperament}`;
+  temperament.classList.add('cat-temperament');
+  catDetails.appendChild(temperament);
+
+  catElement.appendChild(catDetails);
+
+  catInfo.innerHTML = '';
+  catInfo.appendChild(catElement);
+
+}
+
+function handleBreedSelectChange() {
+  const selectBreedId = breedSelect.value;
+  hideCI();
+  clearCI();
+  showLoad();
+
+  fetchCatByBreed(selectBreedId)
+    .then(cat => {
+      updateCI(cat);
+      hideLoad();
+      catInfo.style.display = 'block';
+    })
+    .catch(error => {
+      hideLoad();
+      seeError();
+    });
+}
+
+fetchBreeds()
+  .then(breeds => {
+    populateBreedSelect(breeds);
+    hideLoad();
   })
-  .join("");
-  selectList.innerHTML = markup;
+  .catch(error => {
+    hideLoad();
+    seeError();
+  });
 
-}
 
-function renderBreedsCard(breedImg, object) {
-  return cardBox.innerHTML = `<img 
-  src=${breedImg}
-  class="ee"
-  alt="cat"
-  width="300"
-  /><div class="text-content">
-  <h2 class="title-breed">${object.name}</h2>
-  <p class="breed-desc">${object.description}</p>
-  <p class="bread-temperament"><b>Temperament</b> ${object.temperament}</p>
-  </div>`
-}
-export { renderBreedsSelect };
