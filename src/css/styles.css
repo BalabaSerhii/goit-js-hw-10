@@ -1,0 +1,65 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
+  margin: 0;
+}
+ 
+.unvisible {
+  display: none;
+}
+
+.breed-select {
+  margin-bottom: 50px;
+  width: 150px;
+  height: 30px;
+  text-align: center;
+  
+}
+
+
+
+.text-content {
+  margin-left: 20px;
+  width: 720px;
+  background-color: rgb(238, 232, 232);
+  border-radius: 10px;
+  padding: 50px 20px;
+}
+
+.cat-info {
+  display: flex;
+  justify-content: center;
+}
+
+image {
+  object-fit: cover;
+  width: 300px;
+  height: 220px;
+}
+
+.title-breed {
+  margin-bottom: 20px;
+  text-align: center;
+  padding-top: 30px;
+}
+
+.breed-desc {
+  margin-bottom: 20px;
+  width: 700px;
+  text-align: center;
+  font-size: 24px;
+ }
+
+ .ee {
+  width: 700px;
+  font-size: 38px;
+  border-radius: 10px;
+ }
+
+ .bread-temperament {
+  font-size: 24px;
+  padding: 20px;
+ }
